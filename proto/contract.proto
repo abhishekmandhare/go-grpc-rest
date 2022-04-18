@@ -2,18 +2,24 @@ syntax = "proto3";
 
 package server;
 
-service Calculator {
-    rpc Add (Request) returns (Reply) {}
-    rpc Sub (Request) returns (Reply) {}
-    rpc Mul (Request) returns (Reply) {}
-    rpc Div (Request) returns (Reply) {}
+import "google/api/annotations.proto";
+
+option go_package = "github.com/abhishekmandhare/go-grpc-rest/orders";
+
+service OrdersAPI {
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {
+      option (google.api.http) ={
+        post: "/api/Orders"
+        body:"*"
+      };
+    }
   }
   
-  message Request {
+  message CreateOrderRequest {
     repeated int32 nums = 1 [packed = true];
   }
   
 
-  message Reply {
+  message CreateOrderResponse {
     int32 num = 1;
   }

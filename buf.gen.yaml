@@ -1,0 +1,15 @@
+version: v1
+plugins:
+  - name: go
+    out: ./orders-api
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: ./orders-api
+    opt:
+      - paths=source_relative
+  - name: grpc-gateway
+    out: ./orders-api
+    opt: paths=source_relative
+  - name: openapiv2
+    out: ./docs
